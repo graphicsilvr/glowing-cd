@@ -1,0 +1,9 @@
+# ignore compiled Python files
+*.pyc
+
+# ignore the virtual environment
+venv/
+
+# ignore any other temporary files or directories
+__pycache__/
+*.egg-info/
