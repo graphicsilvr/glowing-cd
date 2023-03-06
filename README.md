@@ -31,6 +31,12 @@ Setting up the Python environment on the Digital Ocean droplet was more complica
 
 We encountered issues with file permissions when trying to restart the application after a deployment. We solved this problem by setting the appropriate file permissions on the application files and using the sudo command to execute the restart command with elevated privileges.
 
+4. GitHub Actions Workflow Syntax Errors:
+During the creation of the GitHub Actions workflow file, we encountered syntax errors that caused the workflow to fail. We solved this problem by carefully reviewing the documentation and correcting the syntax errors in the workflow file.
+
+5. Debugging Remote Server Issues:
+When deploying the Flask application to the remote Digital Ocean server, we encountered issues with the application not running as expected. We solved this problem by reviewing the server logs, debugging the code, and making necessary changes to the application configuration.
+
 # Conclusion
 Overall, this project was a great learning experience in continous deployment and automation. 
 
