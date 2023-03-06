@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - master
 
 jobs:
   test:
@@ -21,8 +20,21 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
-      - name: Run tests
-        run: python test_cd.py
+    - name: Test with Pytest
+      run: pytest
 
-      - name: Deploy
-        run: ./deploy.sh
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up SSH keys
+      uses: webfactory/ssh-agent@v0.4.1
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    
+    - name: Deploy to Digital Ocean VPS
+      run: ssh user@your_server_ip "cd /path/to/your/app && git pull && pip install -r requirements.txt && systemctl restart your_app.service"
+
