@@ -11,12 +11,12 @@ name: Test and Deploy
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
-        python-version: '3.9'
+        python-version: '3.9.10'
     
     - name: Install dependencies
       run: pip install -r requirements.txt
@@ -29,7 +29,7 @@ name: Test and Deploy
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Set up SSH keys
       uses: webfactory/ssh-agent@v0.4.1
@@ -37,7 +37,7 @@ name: Test and Deploy
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     
     - name: Deploy to Digital Ocean VPS
-      run: ssh user@your_server_ip "cd /path/to/your/app && git pull && pip install -r requirements.txt && systemctl restart your_app.service"
+      run: ssh root@161.35.80.203 "cd var/www/html/service.cd && git pull && pip install -r requirements.txt && systemctl restart cd.service"
 
 
 
