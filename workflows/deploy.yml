@@ -37,7 +37,7 @@ name: Test and Deploy
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     
     - name: Deploy to Digital Ocean VPS
-      run: ssh root@161.35.80.203 "cd var/www/html/service.cd && git pull && pip install -r requirements.txt && systemctl restart cd.service"
+      run: ssh root@161.35.80.203 "cd var/www/html/service.cd && git pull && pip install -r requirements.txt && systemctl restart service.cd"
 
 
 
