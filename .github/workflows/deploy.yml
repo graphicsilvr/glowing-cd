@@ -1,0 +1,40 @@
+name: Test and Deploy
+
+  on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.9.10'
+    
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Test with Pytest
+      run: pytest
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up SSH keys
+      uses: webfactory/ssh-agent@v0.4.1
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    
+    - name: Deploy to Digital Ocean VPS
+      run: ssh root@161.35.80.203 "cd var/www/html/service.cd && git pull && pip install -r requirements.txt && systemctl restart service.cd"
