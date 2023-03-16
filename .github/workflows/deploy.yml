@@ -1,7 +1,5 @@
 name: Test and Deploy
 
-name: Test and Deploy
-
 on:
   push:
     branches: [ "main" ]
