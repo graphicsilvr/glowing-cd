@@ -1,5 +1,7 @@
 name: Test and Deploy
 
+name: Test and Deploy
+
 on:
   push:
     branches: [ "main" ]
@@ -7,9 +9,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-test:
+  test:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
 
@@ -24,9 +25,10 @@ test:
     - name: Test with Pytest
       run: pytest
 
-    deploy:
+  deploy:
     needs: test
-
+    runs-on: ubuntu-latest
+    steps:
     - name: Set up SSH keys
       uses: webfactory/ssh-agent@v0.4.1
       with:
