@@ -25,7 +25,7 @@ jobs:
     - name: Set up SSH keys
       uses: webfactory/ssh-agent@v0.4.1
       with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        private_key: ${{ secrets.SSH_PRIVATE_KEY }}
     
     - name: Deploy to Digital Ocean VPS
       run: ssh root@161.35.80.203 "cd root/glowing-cd/service.cd && git pull && systemctl restart service.cd"
