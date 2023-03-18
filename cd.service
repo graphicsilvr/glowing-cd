@@ -1,0 +1,12 @@
+[Unit]
+Description=My Flask Application
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/home/glowing-cd/
+ExecStart=/usr/bin/python3 cd.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
