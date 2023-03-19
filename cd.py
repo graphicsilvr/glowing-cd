@@ -13,3 +13,5 @@ def index():
 def cow():
     return 'MOoooOo!'
 
+wsgi_app = cd.wsgi_app
+
