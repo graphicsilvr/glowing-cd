@@ -32,4 +32,3 @@ jobs:
           script: |
             cd /root/glowing-cd/
             git pull
-
