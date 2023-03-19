@@ -32,4 +32,4 @@ jobs:
           script: |
         
             cd /root/glowing-cd/
-            git pull && systemctl restart service.cd"
+            git pull
