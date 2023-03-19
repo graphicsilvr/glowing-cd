@@ -22,16 +22,14 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: executing remote ssh commands using ssh key
-      uses: appleboy/ssh-action@v0.1.8
-      with:
-      
-    host: ${{ secrets.HOST }}
-    username: ${{ secrets.USERNAME }}
-    key: ${{ secrets.SSH_PRIVATE_KEY2 }}
-    port: ${{ secrets.PORT }}
-    script: whoami
-    
-    - name: Deploy to Digital Ocean VPS
-      run: ssh root@161.35.80.203 "cd /root/glowing-cd/service.cd && git pull && systemctl restart service.cd"
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.161.35.80.203 }}
+          username: ${{ secrets.ROOT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY3 }}
+          port: 8000
+          script: |
+        
+            cd /root/glowing-cd/
+            git pull && systemctl restart service.cd"
