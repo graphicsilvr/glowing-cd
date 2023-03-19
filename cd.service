@@ -3,9 +3,14 @@ Description=My Flask Application
 After=network.target
 
 [Service]
-User=root
+User=glowing-cd
 WorkingDirectory=/home/glowing-cd/
 ExecStart=/usr/bin/python3 cd.py
+Environment=FLASK_APP=cd.py
+Environment=FLASK_ENV=production
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=cd
 Restart=always
 
 [Install]
