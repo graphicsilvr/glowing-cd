@@ -30,4 +30,4 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY2 }}
         
     - name: Deploy to Digital Ocean VPS
-      run: ssh root@161.35.80.203 "cd glowing-cd/service.cd && git pull && systemctl restart service.cd"
+      run: ssh root@161.35.80.203 "cd root/glowing-cd/service.cd && git pull && systemctl restart service.cd"
