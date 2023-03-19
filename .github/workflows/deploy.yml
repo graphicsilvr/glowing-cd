@@ -22,10 +22,12 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
     - name: Set up SSH keys
       uses: webfactory/ssh-agent@v0.7.0
       with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY2 }}
-    
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY2 }}
+        
     - name: Deploy to Digital Ocean VPS
       run: ssh root@161.35.80.203 "cd root/glowing-cd/service.cd && git pull && systemctl restart service.cd"
