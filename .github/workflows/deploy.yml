@@ -30,6 +30,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY3 }}
           port: 8000
           script: |
-        
             cd /root/glowing-cd/
             git pull
+
