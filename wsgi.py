@@ -1,5 +1,5 @@
-from cd import app as application
+from cd import app as app
 
 if __name__ == '__main__':
-    application.run()
+    app.run()
  
