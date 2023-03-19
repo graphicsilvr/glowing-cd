@@ -28,7 +28,7 @@ jobs:
           host: 161.35.80.203
           username: ${{ secrets.ROOT }}
           key: ${{ secrets.SSH_PRIVATE_KEY3 }}
-          port: 8000
+          port: 8080
           script: |
             cd /root/glowing-cd/
             git pull
