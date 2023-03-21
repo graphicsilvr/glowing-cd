@@ -21,14 +21,13 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-
-    steps: 
-    - uses: actions/checkout@v3
-
-    - name: Set up SSH keys
-      uses: webfactory/ssh-agent@v0.4.1
-      with:
-       ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY4 }}
-    
-    - name: Deploy to Digital Ocean VPS
-      run: ssh root@161.35.80.203 "cd /home/glowing-cd && git pull && pip install -r requirements.txt && systemctl restart cd.service"
+    steps:
+      - name: executing remote ssh commands using ssh
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: 161.35.80.203
+          key: ${{ secrets.SSH_PRIVATE_KEY4 }}
+          port: 8000
+          script: cd /home/glowing-cd && ./deploy.sh
+          
+          
