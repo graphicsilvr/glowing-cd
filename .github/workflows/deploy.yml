@@ -28,6 +28,8 @@ jobs:
           host: 161.35.80.203
           key: ${{ secrets.SSH_PRIVATE_KEY4 }}
           port: 8000
-          script: cd /home/glowing-cd && ./deploy.sh
+          script: |
+            git pull 
+            cd /home/glowing-cd && ./deploy.sh
           
           
