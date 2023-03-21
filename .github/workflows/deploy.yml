@@ -26,9 +26,9 @@ jobs:
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: 161.35.80.203
-          username: ${{ secrets.ROOT }}
+          username: ${{ secrets.root }}
           key: ${{ secrets.SSH_PRIVATE_KEY3 }}
-          port: 8080
+          port: 8000
           script: |
-            cd /root/home/glowing-cd/
+            cd home/glowing-cd/
             git pull
