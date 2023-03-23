@@ -18,7 +18,7 @@ jobs:
     - name: Test with Pytest
       run: pip install pytest   
           
-deploy:
+  deploy:
     needs: test
     runs-on: ubuntu-latest
 
@@ -37,12 +37,19 @@ deploy:
       run: cd /home/glowing-cd
       
     - name: pull and install
-      run: |
-      
-      git fetch
-      git reset --hard origin/main
-      git pull
-      pip install -r requirements.txt
-      systemctl restart cd.service
+      run: git fetch
 
-      # Path: .github/workflows/deploy.yml  
+    - name: reset and pull
+      run: git reset --hard origin/main
+
+    - name: pull
+      run: git pull
+
+    - name: install
+      run: pip install -r requirements.txt
+
+    - name: restart service
+      run: systemctl restart cd.service 
+      
+      
+      
