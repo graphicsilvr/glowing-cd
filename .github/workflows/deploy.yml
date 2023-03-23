@@ -18,7 +18,6 @@ jobs:
     - name: Test with Pytest
       run: pip install pytest   
           
-deploy:          
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@v0.1.8
       with:
