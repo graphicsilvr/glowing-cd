@@ -25,12 +25,12 @@ jobs:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v0.1.8
         with:
-          host: 161.35.80.203
+          host: 167.71.6.124
           key: ${{ secrets.SSH_PRIVATE_KEY33 }}
           port: 8000
     
       - name: Deploy to Digital Ocean VPS
-        run: ssh root@161.35.80.203 
+        run: ssh root@167.71.6.124 
       
       - name: change directory
         run: cd /home/glowing-cd
