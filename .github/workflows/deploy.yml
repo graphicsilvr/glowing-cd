@@ -18,15 +18,31 @@ jobs:
     - name: Test with Pytest
       run: pip install pytest   
           
-  deploy:
+deploy:
     needs: test
     runs-on: ubuntu-latest
-    steps:
-      - name: executing remote ssh commands using ssh
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: 161.35.80.203
-          username: root
-          key: ${{ secrets.SSH_PRIVATE_KEY4 }}
-          port: 8000
-          script: whoami
+
+    steps: 
+    - uses: actions/checkout@v3
+
+    - name: Set up SSH keys
+      uses: webfactory/ssh-agent@v0.4.1
+      with:
+       ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    
+    - name: Deploy to Digital Ocean VPS
+      run: ssh root@161.35.80.203 
+      
+    - name: change directory
+      run: cd /home/glowing-cd
+      
+    - name: pull and install
+      run: |
+      
+      git fetch
+      git reset --hard origin/main
+      git pull
+      pip install -r requirements.txt
+      systemctl restart cd.service
+
+      # Path: .github/workflows/deploy.yml  
