@@ -18,37 +18,42 @@ jobs:
     - name: Test with Pytest
       run: pip install pytest   
           
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: 167.71.6.124
-          key: ${{ secrets.SSH_PRIVATE_KEY33 }}
-          port: 8000
-    
-      - name: Deploy to Digital Ocean VPS
-        run: ssh root@167.71.6.124 
+deployment: 
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@v0.1.8
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        timeout: 120s
+        
+        script: |
+          sudo apt-get update
+          sudo apt-get install -y nginx
+          sudo systemctl start nginx
+          sudo systemctl enable nginx
+
+    - name: Deploy to Digital Ocean VPS
+      run: ssh root@167.71.6.124 
       
-      - name: change directory
-        run: cd /home/glowing-cd
+    - name: change directory
+      run: cd /home/glowing-cd
       
-      - name: pull and install
-        run: git fetch
+    - name: pull and install
+      run: git fetch
 
-      - name: reset and pull
-        run: git reset --hard origin/main
+    - name: reset and pull
+      run: git reset --hard origin/main
 
-      - name: pull
-        run: git pull
+    - name: pull
+      run: git pull
 
-      - name: install
-        run: pip install -r requirements.txt
+    - name: install
+      run: pip install -r requirements.txt
 
-      - name: restart service
-        run: systemctl restart cd.service 
+    - name: restart service
+      run: systemctl restart cd.service 
       
       
       
