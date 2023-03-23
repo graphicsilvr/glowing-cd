@@ -26,12 +26,6 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY33 }}
         port: ${{ secrets.PORT }}
         timeout: 120s
-        
-        script: |
-          sudo apt-get update
-          sudo apt-get install -y nginx
-          sudo systemctl start nginx
-          sudo systemctl enable nginx
 
     - name: Deploy to Digital Ocean VPS
       run: ssh root@167.71.6.124 
