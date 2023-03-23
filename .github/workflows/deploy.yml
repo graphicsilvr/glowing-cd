@@ -26,6 +26,13 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY33 }}
         port: ${{ secrets.PORT }}
         timeout: 120s
+        
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps: 
+    - uses: actions/checkout@v3
 
     - name: Deploy to Digital Ocean VPS
       run: ssh root@167.71.6.124 
