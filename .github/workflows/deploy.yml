@@ -17,15 +17,6 @@ jobs:
 
     - name: Test with Pytest
       run: pip install pytest   
-          
-    - name: executing remote ssh commands using ssh key
-      uses: appleboy/ssh-action@v0.1.8
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY33 }}
-        port: ${{ secrets.PORT }}
-        timeout: 120s
         
   deploy:
     needs: test
