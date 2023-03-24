@@ -30,29 +30,14 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    steps: 
-    - uses: actions/checkout@v3
-
-    - name: Deploy to Digital Ocean VPS
-      run: ssh root@167.71.6.124 
-      
-    - name: change directory
-      run: cd /home/glowing-cd
-      
-    - name: pull and install
-      run: git fetch
-
-    - name: reset and pull
-      run: git reset --hard origin/main
-
-    - name: pull
-      run: git pull
-
-    - name: install
-      run: pip install -r requirements.txt
-
-    - name: restart service
-      run: systemctl restart cd.service 
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: 161.35.80.203
+          key: ${{ secrets.SSH_PRIVATE_KEY4 }}
+          port: 8000
+          script: cd /home/glowing-cd && ./deploy.sh
       
       
       
