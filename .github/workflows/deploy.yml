@@ -25,10 +25,10 @@ jobs:
       - name: executing remote ssh command
         uses: appleboy/ssh-action@v0.1.3
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
+          host: 161.35.80.203
+          username: root
+          password: ${{ secrets.SSH_PRIVATE_KEY33 }}
+          port: 22
           script: |
             # Commands to run on the remote server
             echo "Updating application"
