@@ -27,7 +27,7 @@ jobs:
         with:
           host: 161.35.80.203
           key: ${{ secrets.SSH_PRIVATE_KEY33 }}
-          port: 8000
+          port: 22
           script: whoami
       
       
