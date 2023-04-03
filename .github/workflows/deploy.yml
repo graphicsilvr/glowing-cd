@@ -22,13 +22,16 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - name: executing remote ssh commands using password
+      - name: executing remote ssh command
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: 161.35.80.203
           key: ${{ secrets.SSH_PRIVATE_KEY33 }}
           port: 22
-          script: whoami
-      
-      
-      
+          script: |
+            # Commands to run on the remote server
+            echo "Updating application"
+            cd /path/to/application
+            git pull origin main
+            pip install -r requirements.txt
+            systemctl restart cd.service
