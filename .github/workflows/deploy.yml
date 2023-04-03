@@ -31,7 +31,6 @@ jobs:
           script: |
             # Commands to run on the remote server
             echo "Updating application"
-            cd /path/to/application
+            cd /home/glowing-cd
             git pull origin main
-            pip install -r requirements.txt
             systemctl restart cd.service
