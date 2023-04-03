@@ -27,7 +27,7 @@ jobs:
         with:
           host: 161.35.80.203
           username: root
-          password: ${{ secrets.SSH_PRIVATE_KEY33 }}
+          key: ${{ secrets.SSH_PRIVATE_KEY33 }}
           port: 22
           script: |
             # Commands to run on the remote server
