@@ -34,3 +34,4 @@ jobs:
             echo "Updating application"
             cd /home/glowing-cd
             git pull origin main
+            systemctl restart my-service
