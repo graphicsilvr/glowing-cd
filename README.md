@@ -77,7 +77,7 @@ Overall, this project was a great learning experience in continous deployment an
 
 By using GitHub Actions, Bash scripts, SSH and Digital Ocean, i am able to do some configurations to create a seamless deployment workflow that automatically deploys our Python application whenever new code is pushed to the repository. I learned valuable lessons about SSH authentication, Python environment setup, file permissions and more.
 
-The implementation of my solution involved several iterations of troubleshooting and debugging. This debuggin is still actual because not all the steps are completely able to successfully automate the application of deployment process with all the steps described using GitHub Actions and Digital Ocean SSH.
+The implementation of my solution involved several iterations of troubleshooting and debugging.
 
 
 
