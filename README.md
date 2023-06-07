@@ -1,5 +1,8 @@
 # Continous Deployment with Digital Ocean and GitHub Actions
-This repository contains the code for a continous deployment workflow that automatically deploys a Python application to a Digital Ocean droplet using GitHub Actions and SSH. It is still in the phase of debuggin because not all the steps are completely able to successfully automate the application of deployment process. 
+This repository contains the code for a continous deployment workflow that automatically deploys a Python application to a Digital Ocean droplet using GitHub Actions and SSH. By configuring the GitHub Actions workflow, you can enhance and keep adding steps to the automation of the deployment process.
+
+Overview
+The purpose of this project is to streamline the deployment of a Python application to a DigitalOcean droplet. The continuous deployment workflow utilizes GitHub Actions and SSH to automate the deployment process, ensuring efficient and reliable deployments.
 
 # Components of the Solution
 
@@ -77,7 +80,7 @@ Overall, this project was a great learning experience in continous deployment an
 
 By using GitHub Actions, Bash scripts, SSH and Digital Ocean, i am able to do some configurations to create a seamless deployment workflow that automatically deploys our Python application whenever new code is pushed to the repository. I learned valuable lessons about SSH authentication, Python environment setup, file permissions and more.
 
-The implementation of my solution involved several iterations of troubleshooting and debugging.
+The implementation of my solution involved several iterations of troubleshooting and debugging to run succesfully.
 
 
 
